@@ -44,6 +44,7 @@ export const withNormalizeTypes = ({ rules, onError }: WithNormalizeTypes) => <
         if (node) {
           if (strictType && node.type !== strictType) {
             Transforms.setNodes(editor, { type: strictType }, { at: path });
+            return;
           }
         } else {
           try {
@@ -55,6 +56,7 @@ export const withNormalizeTypes = ({ rules, onError }: WithNormalizeTypes) => <
               },
               { at: path }
             );
+            return;
           } catch (err) {
             onError?.(err);
           }
